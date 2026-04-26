@@ -1,0 +1,160 @@
+{
+  "skills": [
+    {
+      "id": "first_aid",
+      "name": "First Aid / Medical",
+      "frequency": 0.25,
+      "description": "Basic medical training, wound care, CPR certified",
+      "mission_types": ["medical_evac", "shelter_medical", "water_rescue"]
+    },
+    {
+      "id": "boat_operation",
+      "name": "Boat Operation",
+      "frequency": 0.08,
+      "description": "Licensed or experienced in operating rescue boats",
+      "mission_types": ["water_rescue", "supply_delivery_water"]
+    },
+    {
+      "id": "swimming",
+      "name": "Strong Swimmer",
+      "frequency": 0.15,
+      "description": "Confident swimmer capable of rescue operations",
+      "mission_types": ["water_rescue", "search_rescue"]
+    },
+    {
+      "id": "driving",
+      "name": "Heavy Vehicle Driving",
+      "frequency": 0.12,
+      "description": "Licensed to drive trucks, buses, or ambulances",
+      "mission_types": ["supply_delivery_road", "evacuation_road", "medical_evac"]
+    },
+    {
+      "id": "cooking",
+      "name": "Mass Cooking",
+      "frequency": 0.20,
+      "description": "Experience preparing food for large groups",
+      "mission_types": ["shelter_feeding", "community_kitchen"]
+    },
+    {
+      "id": "translation",
+      "name": "Multilingual Translation",
+      "frequency": 0.10,
+      "description": "Fluent in Malayalam + Hindi/Tamil/English",
+      "mission_types": ["communication", "shelter_coordination", "medical_evac"]
+    },
+    {
+      "id": "construction",
+      "name": "Construction / Repair",
+      "frequency": 0.08,
+      "description": "Carpentry, masonry, or structural repair skills",
+      "mission_types": ["shelter_repair", "road_clearing", "bridge_repair"]
+    },
+    {
+      "id": "electrical",
+      "name": "Electrical / Generator",
+      "frequency": 0.05,
+      "description": "Qualified electrician, generator maintenance",
+      "mission_types": ["power_restoration", "shelter_electrical"]
+    },
+    {
+      "id": "counseling",
+      "name": "Psychological First Aid",
+      "frequency": 0.06,
+      "description": "Mental health support, trauma counseling",
+      "mission_types": ["shelter_counseling", "community_support"]
+    },
+    {
+      "id": "communication",
+      "name": "HAM Radio / Communication",
+      "frequency": 0.03,
+      "description": "Licensed HAM radio operator or communication specialist",
+      "mission_types": ["communication", "coordination"]
+    }
+  ],
+  "mission_types": {
+    "water_rescue": {
+      "name": "Water Rescue",
+      "required_skills": ["boat_operation", "swimming"],
+      "optional_skills": ["first_aid"],
+      "min_volunteers": 3,
+      "severity_range": [0.7, 1.0],
+      "description": "Rescue stranded individuals from floodwaters"
+    },
+    "medical_evac": {
+      "name": "Medical Evacuation",
+      "required_skills": ["first_aid", "driving"],
+      "optional_skills": ["translation"],
+      "min_volunteers": 2,
+      "severity_range": [0.6, 1.0],
+      "description": "Transport critically ill/injured to medical facilities"
+    },
+    "supply_delivery_road": {
+      "name": "Road Supply Delivery",
+      "required_skills": ["driving"],
+      "optional_skills": ["cooking"],
+      "min_volunteers": 2,
+      "severity_range": [0.3, 0.7],
+      "description": "Deliver food, water, medicine via road"
+    },
+    "supply_delivery_water": {
+      "name": "Water Supply Delivery",
+      "required_skills": ["boat_operation"],
+      "optional_skills": ["cooking"],
+      "min_volunteers": 2,
+      "severity_range": [0.4, 0.8],
+      "description": "Deliver supplies to areas cut off by flooding"
+    },
+    "shelter_feeding": {
+      "name": "Shelter Feeding",
+      "required_skills": ["cooking"],
+      "optional_skills": ["translation"],
+      "min_volunteers": 3,
+      "severity_range": [0.2, 0.5],
+      "description": "Prepare and serve food at relief shelters"
+    },
+    "shelter_medical": {
+      "name": "Shelter Medical",
+      "required_skills": ["first_aid"],
+      "optional_skills": ["counseling"],
+      "min_volunteers": 2,
+      "severity_range": [0.3, 0.6],
+      "description": "Provide medical care at relief shelters"
+    },
+    "search_rescue": {
+      "name": "Search & Rescue",
+      "required_skills": ["swimming"],
+      "optional_skills": ["first_aid", "communication"],
+      "min_volunteers": 4,
+      "severity_range": [0.8, 1.0],
+      "description": "Search for missing persons in affected areas"
+    },
+    "road_clearing": {
+      "name": "Road Clearing",
+      "required_skills": ["construction"],
+      "optional_skills": ["driving"],
+      "min_volunteers": 5,
+      "severity_range": [0.3, 0.6],
+      "description": "Clear debris and restore road access"
+    },
+    "power_restoration": {
+      "name": "Power Restoration",
+      "required_skills": ["electrical"],
+      "optional_skills": ["construction"],
+      "min_volunteers": 2,
+      "severity_range": [0.2, 0.5],
+      "description": "Restore power to critical infrastructure"
+    },
+    "communication": {
+      "name": "Communication Setup",
+      "required_skills": ["communication"],
+      "optional_skills": ["electrical"],
+      "min_volunteers": 1,
+      "severity_range": [0.5, 0.8],
+      "description": "Establish communication networks in cut-off areas"
+    }
+  },
+  "metadata": {
+    "source": "Derived from Kerala SDMA volunteer registry patterns and 2018 flood volunteer profiles",
+    "notes": "Skill frequencies represent approximate distribution in NGO volunteer pools in Kerala"
+  }
+}

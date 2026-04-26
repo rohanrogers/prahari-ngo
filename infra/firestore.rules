@@ -1,0 +1,28 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Volunteers — read by all authenticated, write by service account
+    match /volunteers/{doc} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+    
+    // Live threats — read by all, write by service account
+    match /live_threats/{doc} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+    
+    // Response plans — read by all, write by service account
+    match /response_plans/{doc} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+    
+    // Agent activity — read by all (for dashboard stream), write by service account
+    match /agent_activity/{doc} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+  }
+}

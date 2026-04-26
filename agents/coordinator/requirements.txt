@@ -1,0 +1,13 @@
+# Coordinator Agent — Dependencies
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+pydantic>=2.0
+
+# Google Cloud
+google-genai>=1.0.0
+google-cloud-firestore>=2.16.0
+google-cloud-pubsub>=2.21.0
+
+# Utilities
+numpy>=1.26.0
+python-dotenv>=1.0.0

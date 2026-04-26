@@ -1,0 +1,20 @@
+{
+  "ppo": {
+    "model": "ppo_dispatch_stage1.zip",
+    "env": "PrahariDispatch-v1",
+    "episodes": 10,
+    "mean_reward": 9.659840638435998,
+    "std_reward": 2.2662185183425687,
+    "mean_service_rate": 1.0,
+    "mean_severity_served": 2.09907734915627,
+    "mean_lives_per_hour": 0.0,
+    "mean_missions_served": 3.0,
+    "mean_missions_expired": 0.0
+  },
+  "random": {
+    "model": "random_baseline",
+    "mean_reward": 3.1994569898594785,
+    "mean_service_rate": 1.0,
+    "mean_lives_per_hour": 0.0
+  }
+}
