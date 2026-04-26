@@ -15,8 +15,8 @@ PROJECT_ID = os.environ.get("PROJECT_ID", "prahari-ngo-rj")
 REGION = os.environ.get("REGION", "asia-south1")
 
 # Model identifiers
-GEMINI_FLASH = "gemini-2.0-flash"
-GEMINI_PRO = "gemini-2.0-pro"
+GEMINI_FLASH = "gemini-2.5-flash"
+GEMINI_PRO = "gemini-2.5-pro"
 
 # Initialize the client
 _client = None

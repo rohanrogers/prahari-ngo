@@ -2,7 +2,7 @@
 
 ## Overview
 
-Prahari uses a **three-agent architecture** where each agent is independently deployable on Cloud Run and communicates via Pub/Sub messaging. The dashboard observes all state changes in real-time via Firestore listeners.
+Prahari uses a **four-agent architecture** where each agent is independently deployable on Cloud Run and communicates via Pub/Sub messaging. The Dispatch Optimizer uses Reinforcement Learning for optimal volunteer assignment. The dashboard observes all state changes in real-time via Firestore listeners.
 
 ## Architecture Diagram
 
@@ -120,9 +120,9 @@ Threat Pub/Sub → Semantic Search → Geo Filter → Availability → Language 
 
 | Agent | Model | Feature |
 |---|---|---|
-| Ingestor | Gemini 2.0 Flash | Multimodal extraction (text, PDF, image), JSON output |
-| Watcher | Gemini 2.0 Flash | Google Search grounding for threat verification |
-| Coordinator | Gemini 2.0 Pro | Function calling (7 tools), multilingual outreach |
+| Ingestor | Gemini 2.5 Flash | Multimodal extraction (text, PDF, image), JSON output |
+| Watcher | Gemini 2.5 Flash | Google Search grounding for threat verification |
+| Coordinator | Gemini 2.5 Pro | Function calling (7 tools), multilingual outreach |
 | Shared | text-embedding-005 | 768-dim embeddings for semantic search + dedup |
 
 ## Kerala 2018 Replay

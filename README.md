@@ -88,7 +88,7 @@ The showpiece. Replay real public data streams from the morning of August 15th, 
 
 | Layer | Technology |
 |---|---|
-| AI Engine | Gemini 2.0 Flash (multimodal extraction), Gemini 2.0 Pro (function calling, reasoning) |
+| AI Engine | Gemini 2.5 Flash (multimodal extraction), Gemini 2.5 Pro (function calling, reasoning) |
 | Backend | Python 3.11 + FastAPI, deployed on Google Cloud Run |
 | Frontend | Next.js 16, Tailwind CSS, shadcn/ui, Framer Motion |
 | Database | Google Cloud Firestore (native mode, vector search) |
@@ -127,10 +127,13 @@ cd dashboard && npm install && npm run dev
 ### Deploy to Google Cloud
 
 ```bash
+chmod +x ./scripts/deploy_all.sh
 ./scripts/deploy_all.sh
 ```
 
 ### Environment Variables
+
+Create a `.env` file in each agent directory and a `.env.local` in `dashboard/`.
 
 | Variable | Default | Required By |
 |---|---|---|
@@ -178,7 +181,7 @@ prahari-ngo/
 │   ├── train.py           # PPO curriculum training pipeline
 │   └── evaluate.py        # Deterministic policy evaluation
 ├── shared/                # Shared Firestore, Gemini, Pub/Sub clients
-├── dashboard/             # Next.js 14 frontend
+├── dashboard/             # Next.js 16 frontend
 ├── replay-data/           # Kerala 2018 replay archive
 ├── scripts/               # Deployment + data generation
 ├── infra/                 # Cloud Build, Pub/Sub setup
