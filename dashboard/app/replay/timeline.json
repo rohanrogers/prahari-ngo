@@ -30,6 +30,35 @@
       }
     },
     {
+      "time": "2018-08-15T06:15:00+05:30",
+      "source": "imd",
+      "type": "govt_warning",
+      "data": {
+        "agency": "India Meteorological Department",
+        "alert_level": "red",
+        "title": "Red Alert — Extremely Heavy Rainfall",
+        "content": "IMD red alert active for Idukki, Alappuzha, Ernakulam, Pathanamthitta. Extremely heavy rainfall (>204.5mm/24h) expected. Issued August 14 evening, valid through August 15.",
+        "districts": ["Idukki", "Alappuzha", "Ernakulam", "Pathanamthitta"],
+        "reference": "PIB Press Release, Ministry of Earth Sciences, Aug 14 2018 — IMD briefed Kerala SDMA on red/orange alerts for most districts. Corroborated: Economic Times 'IMD issues red alert for Idukki' Aug 14 2018; The Hindu Kerala flood coverage Aug 15 2018."
+      }
+    },
+    {
+      "time": "2018-08-15T06:20:00+05:30",
+      "source": "cwc",
+      "type": "river_level",
+      "data": {
+        "agency": "Central Water Commission",
+        "reservoir": "Idukki (Cheruthoni Dam)",
+        "water_level_ft": 2401,
+        "full_reservoir_level_ft": 2403,
+        "capacity_pct": 99.2,
+        "gates_status": "open since August 9 (first time in 26 years)",
+        "spill_tmc_aug15": 13.791,
+        "content": "Idukki reservoir at 2,401 ft against FRL of 2,403 ft. Cheruthoni dam gates open since Aug 9. Spill volume surged from 1.634 TMC (Aug 14) to 13.791 TMC (Aug 15).",
+        "reference": "New Indian Express 'Kerala floods: Idukki reservoir swells to near FRL' Aug 15 2018 — water_level_ft 2401, FRL 2403, spill_tmc values cited verbatim. India Today 'Cheruthoni dam gates opened for first time in 26 years' Aug 9 2018 confirms gate status."
+      }
+    },
+    {
       "time": "2018-08-15T06:28:00+05:30",
       "source": "openweather",
       "type": "weather_alert",
@@ -117,9 +146,9 @@
       "type": "agent_action",
       "data": {
         "action": "correlation_start",
-        "signals_found": 6,
-        "source_types": ["openweather", "reddit", "rss"],
-        "reasoning": "3 independent source types reporting crisis signals from Alappuzha district within 2-hour window. Initiating correlation analysis."
+        "signals_found": 8,
+        "source_types": ["openweather", "imd", "cwc", "reddit", "rss"],
+        "reasoning": "5 independent source types reporting crisis signals from Alappuzha district within 2-hour window. IMD red alert and CWC dam level data present — highest confidence sources. Initiating correlation analysis."
       }
     },
     {
@@ -129,7 +158,7 @@
       "data": {
         "action": "confidence_update",
         "confidence_history": [0.38, 0.54, 0.62, 0.72],
-        "reasoning": "Weather data confirms extreme rainfall (94mm/3h). Reddit posts corroborate with eyewitness reports from Kuttanad. Mathrubhumi news headline confirms flood threat. Google Search grounding: IMD orange alert active for Alappuzha."
+        "reasoning": "Weather data confirms extreme rainfall (94mm/3h). IMD red alert active for Alappuzha, Idukki, Ernakulam, Pathanamthitta — government-issued, highest authority source. CWC reports Idukki dam at 99.2% capacity, gates open since Aug 9, spill surging 8.4x overnight. Reddit eyewitness reports from Kuttanad corroborate. Mathrubhumi confirms flood threat."
       }
     },
     {
@@ -142,8 +171,8 @@
         "type": "flood",
         "severity": 4,
         "location": "Alappuzha",
-        "evidence_sources": 3,
-        "reasoning": "High confidence flood threat in Alappuzha district. 3 independent sources agree. Rainfall at 94mm/3h far exceeds alert threshold. Reddit eyewitness reports confirm ground-level flooding. Mathrubhumi reports flood threat official. Publishing threat assessment."
+        "evidence_sources": 5,
+        "reasoning": "High confidence flood threat in Alappuzha district. 5 independent sources: OpenWeather (94mm/3h extreme rainfall), IMD (government red alert for 4 districts), CWC (dam at 99.2% capacity, spill surging), Reddit (eyewitness reports), Mathrubhumi (news confirmation). Publishing threat assessment."
       }
     },
     {

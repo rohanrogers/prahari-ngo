@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const narrations: Record<string, string> = {
   idle: "",
   signals: "First, separate signals from different sources...",
-  thinking: "When two or more agree, the Watcher starts weighing them.",
+  thinking: "Five independent sources — including government data. The Watcher is weighing them.",
   emitted: "At 65% confidence, it alerts \u2014 33 minutes before the first news article would appear.",
   coordinator: "Now the Coordinator reaches into the volunteer graph, picks the right people, drafts messages.",
   complete: "Two and a half hours of head start. That\u2019s what Prahari would have given Kerala.",

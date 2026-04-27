@@ -125,12 +125,24 @@ Threat Pub/Sub → Semantic Search → Geo Filter → Availability → Language 
 | Coordinator | Gemini 2.5 Pro | Function calling (7 tools), multilingual outreach |
 | Shared | text-embedding-005 | 768-dim embeddings for semantic search + dedup |
 
+## Watcher Data Sources
+
+| Source | Type | Status | Notes |
+|---|---|---|---|
+| OpenWeatherMap | Weather API | Active | 12 Indian cities, 5-min polling |
+| Indian News RSS | News feeds | Active | Mathrubhumi, Times of India, NDTV, The Hindu |
+| Reddit JSON | Social signals | Active | r/kerala, r/india + regional subs |
+| IMD (India Meteorological Dept) | Govt warnings | Replay archive | District-wise red/orange alerts. Planned for live |
+| CWC (Central Water Commission) | River/dam levels | Replay archive | Gauge readings, dam capacity. Planned for live |
+
 ## Kerala 2018 Replay
 
 The replay system replays real public data streams from August 15, 2018:
 
 ```
 06:12 → Weather alert (Alappuzha, 62mm rain)
+06:15 → IMD Red Alert (Idukki, Alappuzha, Ernakulam, Pathanamthitta)
+06:20 → CWC: Idukki dam at 2,401 ft / 2,403 ft FRL (99.2% capacity)
 07:03 → Reddit post (Kuttanad water rising)
 07:34 → Mathrubhumi news (flood threat headline)
 07:52 → Weather update (94mm rain — extreme)
@@ -140,3 +152,7 @@ The replay system replays real public data streams from August 15, 2018:
 08:47 → 📰 First news article (33 min LATER)
 10:15 → 🏛️ Govt advisory (2 hr LATER)
 ```
+
+IMD and CWC data verified against PIB releases, The Hindu, New Indian Express,
+and India Today archives from August 2018.
+

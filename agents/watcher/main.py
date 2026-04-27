@@ -25,6 +25,10 @@ from .schemas import WatchCycleResult, Signal
 from .sources.weather import fetch_weather_signals
 from .sources.rss import fetch_rss_signals
 from .sources.reddit import fetch_reddit_signals
+# Planned: IMD district-wise warnings (requires IMD API registration)
+# from .sources.imd import fetch_imd_warnings
+# Planned: CWC river gauge data (requires cwc.gov.in data portal access)
+# from .sources.cwc import fetch_cwc_river_levels
 from .correlator import correlate_signals
 from .grounding import ground_threat
 

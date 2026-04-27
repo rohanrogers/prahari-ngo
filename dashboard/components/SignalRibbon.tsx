@@ -12,6 +12,8 @@ const sourceColors: Record<string, string> = {
   openweather: "var(--signal-ocean)",
   reddit: "var(--signal-sand)",
   rss_mathrubhumi: "var(--signal-moss)",
+  imd: "var(--ember-500)",
+  cwc: "#60a5fa",
   prahari_watcher: "var(--ember-500)",
 };
 

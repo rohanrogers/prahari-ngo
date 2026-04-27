@@ -107,6 +107,11 @@ def correlate_signals(signals: list[Signal]) -> list[ThreatAssessment]:
             for s in group_signals
         ):
             base_confidence += 0.05
+        # Government sources get highest boost — most authoritative
+        if "imd" in source_types:
+            base_confidence += 0.10  # IMD red/orange alert
+        if "cwc" in source_types:
+            base_confidence += 0.10  # CWC river gauge data
         
         base_confidence = min(base_confidence, 0.95)
         

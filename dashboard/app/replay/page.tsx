@@ -47,7 +47,7 @@ export default function ReplayPage() {
 
       const event = events[next];
 
-      if (event.source === "openweather" || event.source === "reddit" || event.source?.startsWith("rss")) {
+      if (event.source === "openweather" || event.source === "reddit" || event.source?.startsWith("rss") || event.source === "imd" || event.source === "cwc") {
         setVisibleSignals((prev) => [...prev, { ...event, _i: next }]);
         setPhase("signals");
       } else if (event.source === "prahari_watcher") {
@@ -189,7 +189,7 @@ export default function ReplayPage() {
           {phase === "thinking" && (
             <motion.div key="thinking" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="text-center" style={{ width: "100%" }}>
               <div className="mb-12">
-                <p style={{ fontSize: "28px", fontWeight: 600, lineHeight: 1.3 }}>Three sources now agree.</p>
+                <p style={{ fontSize: "28px", fontWeight: 600, lineHeight: 1.3 }}>Five sources now agree.</p>
                 <p style={{ fontSize: "22px", fontWeight: 400, color: "var(--ember-500)", marginTop: "8px" }}>
                   The Watcher is weighing them.
                 </p>
@@ -255,10 +255,15 @@ function SignalRow({ signal }: { signal: any }) {
     openweather: { color: "var(--signal-ocean)", label: "OpenWeather" },
     reddit: { color: "var(--signal-sand)", label: "Reddit" },
     rss_mathrubhumi: { color: "var(--signal-moss)", label: "Mathrubhumi" },
+    imd: { color: "var(--ember-500)", label: "IMD" },
+    cwc: { color: "#60a5fa", label: "CWC" },
   };
   const src = sourceMap[signal.source] || { color: "var(--ink-400)", label: signal.source };
-  const content = signal.data?.title || signal.data?.title_en || signal.data?.weather_desc || signal.data?.body?.slice(0, 80) || "";
-  const detail = signal.data?.rainfall_mm_3h ? `${signal.data.rainfall_mm_3h}mm rainfall` : "";
+  const content = signal.data?.title || signal.data?.title_en || signal.data?.content || signal.data?.weather_desc || signal.data?.body?.slice(0, 80) || "";
+  const detail = signal.data?.rainfall_mm_3h ? `${signal.data.rainfall_mm_3h}mm rainfall`
+    : signal.data?.alert_level ? `${signal.data.alert_level.toUpperCase()} alert`
+    : signal.data?.capacity_pct ? `${signal.data.capacity_pct}% capacity`
+    : "";
 
   return (
     <motion.div initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }}

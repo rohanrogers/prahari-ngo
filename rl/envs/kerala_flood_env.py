@@ -97,7 +97,8 @@ class KeralaFloodEnvBase(gym.Env):
         self._vf = 3 + NUM_SKILLS + (1 if fatigue else 0)  # avail, skills, dist, cd, [stamina]
         self._mf = 5 + NUM_SKILLS  # active, req_skills, sev, dist, wait, coverage
         weather_f = len(WEATHER_STATES) if weather else 0
-        obs_size = n_vol * self._vf + n_mis * self._mf + NUM_DISTRICTS + weather_f + 1
+        # road_status(14) + river_level(14) + weather_one_hot + time
+        obs_size = n_vol * self._vf + n_mis * self._mf + NUM_DISTRICTS * 2 + weather_f + 1
         self.observation_space = spaces.Box(low=-1.0, high=3.0, shape=(obs_size,), dtype=np.float32)
 
     def reset(self, seed=None, options=None):
@@ -105,6 +106,12 @@ class KeralaFloodEnvBase(gym.Env):
         self.step_count = 0
         self.stats = {"served": 0, "expired": 0, "generated": 0, "sev_served": 0.0}
         self.road_status = np.ones(NUM_DISTRICTS, dtype=np.float32)
+        # River level per district: 0.0 = normal, 1.0 = danger level
+        # High-flood-risk districts start with elevated baseline
+        self.river_level = np.array([
+            FLOOD_RISK.get(DISTRICT_DATA[d]["flood_risk"], 0.3) * 0.3
+            for d in DISTRICT_IDS
+        ], dtype=np.float32)
         self.weather_state = "light_rain" if self.use_weather else "clear"
         self.pending = []
 
@@ -257,8 +264,23 @@ class KeralaFloodEnvBase(gym.Env):
         else:
             reward -= 0.02 * sum(1 for m in self.missions if m["active"])
 
-        # Arrivals (weather-dependent rate)
-        rate = self.base_arrival * WEATHER_ARRIVAL_MULT.get(self.weather_state, 1.0)
+        # Update river levels based on weather
+        if self.use_weather:
+            rain_delta = {"clear": -0.03, "light_rain": -0.01,
+                          "moderate_rain": 0.02, "heavy_rain": 0.05,
+                          "catastrophic": 0.10}
+            delta = rain_delta.get(self.weather_state, 0.0)
+            # High-risk districts rise faster
+            for i, d_id in enumerate(DISTRICT_IDS):
+                risk_mult = FLOOD_RISK.get(DISTRICT_DATA[d_id]["flood_risk"], 0.3)
+                noise = self.np_random.normal(0, 0.01)
+                self.river_level[i] = float(np.clip(
+                    self.river_level[i] + delta * (1.0 + risk_mult) + noise, 0.0, 1.5
+                ))
+
+        # Arrivals (weather + river-level dependent rate)
+        river_surge = float(np.mean(self.river_level[self.river_level > 0.5])) if (self.river_level > 0.5).any() else 0.0
+        rate = self.base_arrival * WEATHER_ARRIVAL_MULT.get(self.weather_state, 1.0) * (1.0 + river_surge)
         for _ in range(self.np_random.poisson(rate)):
             self._spawn()
 
@@ -308,6 +330,7 @@ class KeralaFloodEnvBase(gym.Env):
             obs.append(m["time_waiting"] / self.expire_steps if m["active"] else 0.0)
             obs.append(self._coverage(m) if m["active"] else 0.0)
         obs.extend(self.road_status.tolist())
+        obs.extend(self.river_level.tolist())  # Per-district river level
         if self.use_weather:
             for ws in WEATHER_STATES:
                 obs.append(1.0 if self.weather_state == ws else 0.0)
