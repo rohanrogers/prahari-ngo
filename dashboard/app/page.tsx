@@ -29,8 +29,8 @@ export default function LandingPage() {
 
           <div style={{ maxWidth: "720px" }}>
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ y: 20 }}
+              animate={{ y: 0 }}
               transition={{ duration: 1 }}
               className="type-display"
               style={{ fontSize: "clamp(3rem, 8vw, 5.5rem)" }}
@@ -49,8 +49,8 @@ export default function LandingPage() {
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ y: 12 }}
+              animate={{ y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               className="mt-8"
               style={{ maxWidth: "560px", fontSize: "17px", color: "var(--ink-200)", lineHeight: 1.7 }}
@@ -63,7 +63,7 @@ export default function LandingPage() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.7 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
               className="mt-10 flex gap-3"
             >
               <Link href="/replay" className="btn btn-primary">
