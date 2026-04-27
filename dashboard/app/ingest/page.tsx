@@ -87,6 +87,17 @@ export default function IngestPage() {
         </h1>
       </div>
 
+      {/* Demo mode notice */}
+      <div className="container" style={{ marginBottom: "16px" }}>
+        <div className="surface-glass rounded-lg px-5 py-3 flex items-center gap-3" style={{ fontSize: "13px", borderLeft: "3px solid var(--signal-sand)" }}>
+          <span style={{ color: "var(--signal-sand)", fontWeight: 500 }}>Demo mode</span>
+          <span style={{ color: "var(--ink-400)" }}>
+            Live ingestion requires the Cloud Run backend. Click &ldquo;Try the Kerala 2018 sample&rdquo; below for a simulated extraction,
+            or <a href="/replay" style={{ color: "var(--ember-500)", textDecoration: "underline" }}>watch the full Replay</a> to see all agents in action.
+          </span>
+        </div>
+      </div>
+
       {/* Main split */}
       <div className="container" style={{ display: "grid", gridTemplateColumns: "5fr 7fr", gap: "24px", minHeight: "70vh" }}>
         {/* LEFT */}

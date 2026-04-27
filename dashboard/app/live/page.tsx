@@ -62,35 +62,62 @@ export default function LivePage() {
         </div>
 
         {/* Map placeholder */}
-        <div className="w-full h-full flex items-center justify-center relative" style={{
+        <div className="w-full h-full relative" style={{
           background: "radial-gradient(circle at 30% 40%, rgba(91,139,160,0.03) 0%, transparent 50%), radial-gradient(circle at 70% 60%, rgba(168,84,69,0.03) 0%, transparent 50%), var(--ink-900)",
         }}>
-          <div style={{ fontSize: "14px", color: "var(--ink-500)", opacity: 0.5, textAlign: "center" }}>
-            <MapIcon className="w-6 h-6 mx-auto mb-2" strokeWidth={1.5} />
-            Connect Google Maps API to enable
-          </div>
+          {/* Kerala district grid */}
+          {[
+            { id: "TVM", lat: 8.5241, lng: 76.9366 },
+            { id: "KLM", lat: 8.8932, lng: 76.6141 },
+            { id: "PTA", lat: 9.2648, lng: 76.787 },
+            { id: "ALP", lat: 9.4981, lng: 76.3388 },
+            { id: "KTM", lat: 9.5916, lng: 76.5222 },
+            { id: "IDK", lat: 9.85, lng: 76.9833 },
+            { id: "EKM", lat: 9.9812, lng: 76.2999 },
+            { id: "TSR", lat: 10.5276, lng: 76.2144 },
+            { id: "PKD", lat: 10.7867, lng: 76.6548 },
+            { id: "MLP", lat: 11.05, lng: 76.0711 },
+            { id: "KZH", lat: 11.2588, lng: 75.7804 },
+            { id: "WYD", lat: 11.7172, lng: 76.13 },
+            { id: "KNR", lat: 11.8745, lng: 75.3704 },
+            { id: "KSD", lat: 12.5004, lng: 74.9873 },
+          ].map((d) => {
+            const x = ((d.lng - 74.5) / (77.5 - 74.5)) * 80 + 10;
+            const y = (1 - (d.lat - 8.0) / (13.0 - 8.0)) * 80 + 10;
+            return (
+              <div key={d.id} className="absolute" style={{ left: `${x}%`, top: `${y}%`, transform: "translate(-50%, -50%)" }}>
+                <div style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--ink-500)", opacity: 0.4 }} />
+                <div className="type-mono" style={{ fontSize: "8px", color: "var(--ink-600)", textAlign: "center", marginTop: 2 }}>{d.id}</div>
+              </div>
+            );
+          })}
 
-          {threats.map((threat, i) => (
-            <motion.div key={threat.id}
-              onClick={() => setSelectedThreat(threat.id === selectedThreat ? null : threat.id)}
-              initial={{ scale: 0 }} animate={{ scale: 1 }}
-              className="absolute cursor-pointer"
-              style={{ top: `${35 + i * 15}%`, left: `${25 + i * 20}%` }}>
-              <div className="pulse-breathe flex items-center justify-center" style={{
-                width: "44px", height: "44px", borderRadius: "50%",
-                background: `rgba(${threat.severity >= 4 ? "168,84,69" : "191,161,107"}, 0.2)`,
-              }}>
-                <div style={{
-                  width: "16px", height: "16px", borderRadius: "50%",
-                  background: threat.severity >= 4 ? "var(--signal-rust)" : "var(--signal-sand)",
-                  boxShadow: `0 0 12px ${threat.severity >= 4 ? "var(--signal-rust)" : "var(--signal-sand)"}`,
-                }} />
-              </div>
-              <div className="text-center mt-1" style={{ fontSize: "12px", color: "var(--ink-400)" }}>
-                {threat.location.district}
-              </div>
-            </motion.div>
-          ))}
+          {/* Threat markers overlaid on correct district positions */}
+          {threats.map((threat) => {
+            const x = ((threat.location.lon - 74.5) / (77.5 - 74.5)) * 80 + 10;
+            const y = (1 - (threat.location.lat - 8.0) / (13.0 - 8.0)) * 80 + 10;
+            return (
+              <motion.div key={threat.id}
+                onClick={() => setSelectedThreat(threat.id === selectedThreat ? null : threat.id)}
+                initial={{ scale: 0 }} animate={{ scale: 1 }}
+                className="absolute cursor-pointer"
+                style={{ left: `${x}%`, top: `${y}%`, transform: "translate(-50%, -50%)" }}>
+                <div className="pulse-breathe flex items-center justify-center" style={{
+                  width: "44px", height: "44px", borderRadius: "50%",
+                  background: `rgba(${threat.severity >= 4 ? "168,84,69" : "191,161,107"}, 0.2)`,
+                }}>
+                  <div style={{
+                    width: "16px", height: "16px", borderRadius: "50%",
+                    background: threat.severity >= 4 ? "var(--signal-rust)" : "var(--signal-sand)",
+                    boxShadow: `0 0 12px ${threat.severity >= 4 ? "var(--signal-rust)" : "var(--signal-sand)"}`,
+                  }} />
+                </div>
+                <div className="text-center mt-1" style={{ fontSize: "12px", color: "var(--ink-400)" }}>
+                  {threat.location.district}
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* Detail panel */}

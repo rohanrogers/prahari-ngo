@@ -37,7 +37,7 @@ const STAGES = Array.from({ length: 15 }, (_, i) => ({
     "Road Closures", "Partial Obs", "Multi-Zone", "Fatigue", "Comm Delay",
     "Weather", "Weather+Roads", "Zone Alloc", "Adversarial", "Real Skills", "Full Kerala"
   ][i],
-  status: i < 3 ? "trained" : i < 9 ? "ready" : "locked",
+  status: i < 1 ? "trained" : i < 9 ? "ready" : "locked",
 }));
 
 // Simulated RL agent metrics

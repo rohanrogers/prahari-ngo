@@ -48,7 +48,7 @@ The showpiece. Replay real public data streams from the morning of August 15th, 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
 │                          PRAHARI DASHBOARD                               │
-│                   Next.js 16 + Firebase Hosting                          │
+│                   Next.js 16 + Vercel                                    │
 │       [Prahari] [Ingest] [Live] [Replay] [Dispatch]                      │
 └───────────┬────────────────┬──────────────────┬──────────────────────────┘
             │ Upload         │ Real-time        │ Confirm
