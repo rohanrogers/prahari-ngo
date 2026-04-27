@@ -93,7 +93,7 @@ echo ""
 echo "▶ Deploying Dashboard..."
 cd dashboard
 npm run build
-firebase deploy --only hosting
+vercel --prod
 cd ..
 echo "✅ Dashboard deployed"
 
@@ -105,4 +105,4 @@ echo ""
 echo "Ingestor:    $(gcloud run services describe prahari-ingestor --region $REGION --format='value(status.url)' 2>/dev/null)"
 echo "Watcher:     $(gcloud run services describe prahari-watcher --region $REGION --format='value(status.url)' 2>/dev/null)"
 echo "Coordinator: $(gcloud run services describe prahari-coordinator --region $REGION --format='value(status.url)' 2>/dev/null)"
-echo "Dashboard:   Check Firebase Hosting URL"
+echo "Dashboard:   Check Vercel Project URL"
