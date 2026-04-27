@@ -32,7 +32,7 @@ Prahari is a **four-agent AI system** that:
 |---|---|---|---|
 | Ingests messy NGO data | No | No | Yes — WhatsApp, PDF, images, Excel |
 | Proactive threat detection | Yes (enterprise) | No | Yes — Multi-source correlation |
-| Indian language support | No | Limited | Yes — Malayalam, Hindi, Tamil, Telugu, Kannada |
+| Indian language support | No | Limited | Yes — Malayalam, Hindi, Tamil, English |
 | Works with existing NGO workflows | No | No | Yes — No new platform required |
 | Pre-stages response before confirmation | No | No | Yes — Gemini function calling |
 | RL-optimized dispatch | No | No | Yes — 15-stage PPO curriculum, +202% vs random |
