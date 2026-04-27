@@ -12,7 +12,7 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen">
       {/* HERO */}
-      <section className="min-h-[92vh] flex flex-col justify-between relative overflow-hidden" style={{ paddingTop: "128px", paddingBottom: "64px" }}>
+      <section className="hero-section min-h-[92vh] flex flex-col justify-between relative overflow-hidden" style={{ paddingTop: "128px", paddingBottom: "64px" }}>
         <div className="container relative">
           {/* Date stamp */}
           <div className="absolute top-0 right-0 type-mono text-right" style={{ fontSize: "12px", color: "var(--ink-400)" }}>
@@ -82,7 +82,7 @@ export default function LandingPage() {
       </section>
 
       {/* HOW IT WORKS */}
-      <section style={{ paddingTop: "128px", paddingBottom: "128px", borderTop: "1px solid var(--glass-stroke)" }}>
+      <section className="section-pad" style={{ paddingTop: "128px", paddingBottom: "128px", borderTop: "1px solid var(--glass-stroke)" }}>
         <div className="container">
           <div className="mb-16">
             <div className="flex items-baseline gap-3 mb-4">
@@ -94,7 +94,7 @@ export default function LandingPage() {
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "20px" }}>
+          <div className="agent-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "20px" }}>
             <AgentCase
               number="01"
               glyph={<IngestorGlyph className="w-6 h-6" />}
@@ -132,7 +132,7 @@ export default function LandingPage() {
       </section>
 
       {/* THE CLAIM */}
-      <section style={{ paddingTop: "128px", paddingBottom: "128px", borderTop: "1px solid var(--glass-stroke)" }}>
+      <section className="section-pad" style={{ paddingTop: "128px", paddingBottom: "128px", borderTop: "1px solid var(--glass-stroke)" }}>
         <div className="container-narrow" style={{ textAlign: "center" }}>
           <div className="flex items-baseline gap-3 justify-center mb-8">
             <span style={{ fontSize: "13px", fontWeight: 500, color: "var(--ember-500)" }}>02</span>
@@ -157,7 +157,7 @@ export default function LandingPage() {
       </section>
 
       {/* FOOTER */}
-      <footer className="container flex justify-between items-center" style={{
+      <footer className="container footer-inner flex justify-between items-center" style={{
         paddingTop: "32px", paddingBottom: "32px",
         borderTop: "1px solid var(--glass-stroke)", fontSize: "13px", color: "var(--ink-400)",
       }}>
@@ -218,7 +218,7 @@ function LiveTicker() {
                     background: "linear-gradient(90deg, var(--ink-900), transparent)" }}>
         LIVE &middot;
       </div>
-      <div className="flex gap-12 whitespace-nowrap" style={{ paddingLeft: "60px", animation: "ticker-scroll 40s linear infinite" }}>
+      <div className="ticker-track flex gap-12 whitespace-nowrap" style={{ paddingLeft: "60px", animation: "ticker-scroll 40s linear infinite" }}>
         {[...messages, ...messages].map((msg, i) => (
           <span key={i} className="type-mono" style={{ fontSize: "12px", color: "var(--ink-200)" }}>
             <span style={{ color: agentColor(msg.agent) }}>{"\u25b8"} {msg.agent}</span>

@@ -279,3 +279,60 @@ body::before {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ═══ MOBILE ═══ */
+
+@media (max-width: 768px) {
+  .container, .container-narrow {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* Agent cards: single column on mobile */
+  .agent-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  /* Slow down ticker on small screens */
+  .ticker-track {
+    animation-duration: 60s !important;
+  }
+
+  /* Nav pill: scrollable on mobile */
+  nav.surface-glass {
+    max-width: calc(100vw - 24px);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  nav.surface-glass::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Reduce hero section padding */
+  .hero-section {
+    padding-top: 96px !important;
+    padding-bottom: 40px !important;
+  }
+
+  /* Reduce section padding */
+  .section-pad {
+    padding-top: 64px !important;
+    padding-bottom: 64px !important;
+  }
+
+  /* Footer: stack on mobile */
+  .footer-inner {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Tablet: 2 columns */
+  .agent-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
