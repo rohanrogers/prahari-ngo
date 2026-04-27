@@ -4,6 +4,9 @@
 
 > India's first proactive NGO crisis coordination system — built for GDG Solution Challenge 2026 India.
 
+📺 **[Watch the 2-Minute Demo Video](https://www.youtube.com/watch?v=jCCR0J5gBRY)**
+ | 🌐 **[Live Prototype Dashboard](https://dashboard-nu-seven-10.vercel.app)**
+
 ---
 
 ## The Problem
