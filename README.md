@@ -93,7 +93,7 @@ The showpiece. Replay real public data streams from the morning of August 15th, 
 | Frontend | Next.js 16, Tailwind CSS, shadcn/ui, Framer Motion |
 | Database | Google Cloud Firestore (native mode, vector search) |
 | Messaging | Google Cloud Pub/Sub |
-| Hosting | Firebase Hosting (dashboard), Cloud Run (agents) |
+| Hosting | Vercel (dashboard), Cloud Run (agents) |
 | Maps | Google Maps JavaScript API |
 | Scheduling | Google Cloud Scheduler |
 | Storage | Google Cloud Storage |
