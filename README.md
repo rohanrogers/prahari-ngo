@@ -94,11 +94,17 @@ The showpiece. Replay real public data streams from the morning of August 15th, 
 | Database | Google Cloud Firestore (native mode, vector search) |
 | Messaging | Google Cloud Pub/Sub |
 | Hosting | Vercel (dashboard), Cloud Run (agents) |
-| Maps | Google Maps JavaScript API |
 | Scheduling | Google Cloud Scheduler |
 | Storage | Google Cloud Storage |
 | External Data | OpenWeatherMap API, RSS feeds, Reddit JSON |
 | RL Training | Gymnasium 0.29, Stable-Baselines3 (PPO), TensorBoard |
+
+## Roadmap & Next Steps
+
+While the core multi-agent architecture and RL environment are built, our immediate next steps for production readiness include:
+- **Geospatial Visualization**: Integrating the **Google Maps JavaScript API** to replace the current abstract dispatch radar with a full interactive map.
+- **Live Sensor Hooks**: Transitioning IMD weather warnings and CWC river gauge data from historical replay sources into active, live-polled webhooks.
+- **RL Curriculum Completion**: Training the Dispatch Optimizer policy on stages 2–15 to handle dynamic adversarial weather and road closures.
 
 ## Quick Start
 
