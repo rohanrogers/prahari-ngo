@@ -12,7 +12,7 @@ const timeline = timelineData as any;
 
 export default function ReplayPage() {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [speed, setSpeed] = useState(10);
+  const [speed, setSpeed] = useState(1);
   const [currentIndex, setCurrentIndex] = useState(-1);
   const [confidence, setConfidence] = useState(0);
   const [visibleSignals, setVisibleSignals] = useState<any[]>([]);
@@ -167,6 +167,9 @@ export default function ReplayPage() {
               </p>
               <p className="mt-4" style={{ fontSize: "14px", color: "var(--ink-500)" }}>
                 Prahari will process only the public data that existed at each moment.
+              </p>
+              <p className="mt-12 mx-auto" style={{ fontSize: "13px", color: "var(--ink-500)", maxWidth: "550px", fontStyle: "italic", borderTop: "1px solid var(--glass-stroke)", paddingTop: "24px" }}>
+                *Sources marked IMD and CWC are historically verified facts, reconstructed from government press releases and archived news reporting.
               </p>
             </motion.div>
           )}
