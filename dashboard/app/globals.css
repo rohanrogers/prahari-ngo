@@ -322,6 +322,16 @@ body::before {
     padding-bottom: 64px !important;
   }
 
+  /* Prevent Framer Motion hydration blink on hero text.
+     Forces opacity:1 via !important to override the inline
+     opacity:0 that Framer Motion sets during React hydration.
+     Desktop is unaffected — this block only fires below 768px. */
+  .hero-title,
+  .hero-subtitle,
+  .hero-buttons {
+    opacity: 1 !important;
+  }
+
   /* Footer: stack on mobile */
   .footer-inner {
     flex-direction: column;

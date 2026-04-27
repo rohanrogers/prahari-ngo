@@ -29,10 +29,10 @@ export default function LandingPage() {
 
           <div style={{ maxWidth: "720px" }}>
             <motion.h1
-              initial={{ y: 20 }}
-              animate={{ y: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
-              className="type-display"
+              className="type-display hero-title"
               style={{ fontSize: "clamp(3rem, 8vw, 5.5rem)" }}
             >
               The sentinel<br />
@@ -49,10 +49,10 @@ export default function LandingPage() {
             </motion.h1>
 
             <motion.p
-              initial={{ y: 12 }}
-              animate={{ y: 0 }}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="mt-8"
+              className="hero-subtitle mt-8"
               style={{ maxWidth: "560px", fontSize: "17px", color: "var(--ink-200)", lineHeight: 1.7 }}
             >
               In August 2018, the worst flood in a century killed 483 people in Kerala.
@@ -63,8 +63,8 @@ export default function LandingPage() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="mt-10 flex gap-3"
+              transition={{ duration: 0.8, delay: 0.7 }}
+              className="hero-buttons mt-10 flex gap-3"
             >
               <Link href="/replay" className="btn btn-primary">
                 <span>Watch August 15, 2018</span>
