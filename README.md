@@ -206,7 +206,7 @@ Stage 1 training results (50K timesteps):
 
 ## Demo
 
-[Live MVP]()
+[Live MVP](https://dashboard-nu-seven-10.vercel.app)
 
 [Demo Video]()
 
